@@ -34,18 +34,18 @@ const SamplePage = () => {
     fetchLeads();
   }, []);
 
-  // Handle page change
+ 
   const handleChangePage = (event, newPage) => {
     setPage(newPage);
   };
 
-  // Handle rows per page change
+
   const handleChangeRowsPerPage = (event) => {
     setRowsPerPage(parseInt(event.target.value, 10));
-    setPage(0); // Reset to first page
+    setPage(0); 
   };
 
-  // Slice the leads for current page
+ 
   const paginatedLeads = leads.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
 
   return (
