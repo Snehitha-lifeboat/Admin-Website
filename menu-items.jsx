@@ -51,7 +51,7 @@ export default {
       children: [
         {
           id: 'sample-page',
-          title: 'Sample Page',
+          title: 'Leads',
           type: 'item',
           url: '/sample-page',
           icon: icons['ChromeReaderModeOutlinedIcon']

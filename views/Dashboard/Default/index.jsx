@@ -22,6 +22,7 @@ import ArticleTwoTone from '@mui/icons-material/ArticleTwoTone';
 // import ThumbUpAltTwoTone from '@mui/icons-material/ThumbUpAltTwoTone';
 import GroupsTwoTone from '@mui/icons-material/GroupsTwoTone'
 import CalendarTodayTwoTone from '@mui/icons-material/CalendarTodayTwoTone';
+import { useNavigate } from 'react-router-dom';
 
 // custom style
 const FlatCardBlock = styled((props) => <Grid item sm={6} xs={12} {...props} />)(({ theme }) => ({
@@ -45,6 +46,7 @@ const [courseCount, setCourseCount]=useState(0);
 const[newsCount, setNewsCount]=useState(0);
  const [studentCount, setStudentCount] = useState(0);
   const [isAdmin, setIsAdmin] = useState(false); 
+const navigate = useNavigate();
 
 
   useEffect(() => {
@@ -128,6 +130,8 @@ const[newsCount, setNewsCount]=useState(0);
               footerData=" Leads Count "
               iconPrimary={EmojiPeopleTwoTone}
               iconFooter={TrendingUpIcon}
+               onClick={() => navigate('/sample-page')} 
+              
             />
           </Grid>
           <Grid item lg={3} sm={6} xs={12}>

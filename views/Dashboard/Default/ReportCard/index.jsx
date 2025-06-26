@@ -7,7 +7,7 @@ import { Box, Card, CardContent, Grid, Typography } from '@mui/material';
 
 // ==============================|| REPORT CARD ||============================== //
 
-const ReportCard = ({ primary, secondary, iconPrimary, color, footerData, iconFooter }) => {
+const ReportCard = ({ primary, secondary, iconPrimary, color, footerData, iconFooter, onClick }) => {
   const theme = useTheme();
   const IconPrimary = iconPrimary;
   const primaryIcon = iconPrimary ? <IconPrimary fontSize="large" /> : null;
@@ -15,7 +15,16 @@ const ReportCard = ({ primary, secondary, iconPrimary, color, footerData, iconFo
   const footerIcon = iconFooter ? <IconFooter /> : null;
 
   return (
-    <Card>
+    <Card
+      onClick={onClick}
+      sx={{
+        cursor: onClick ? 'pointer' : 'default',
+        transition: 'transform 0.2s ease',
+        '&:hover': {
+          transform: onClick ? 'scale(1.02)' : 'none'
+        }
+      }}
+    >
       <CardContent>
         <Grid container justifyContent="space-between" alignItems="center">
           <Grid item>
@@ -58,12 +67,13 @@ const ReportCard = ({ primary, secondary, iconPrimary, color, footerData, iconFo
 };
 
 ReportCard.propTypes = {
-  primary: PropTypes.string,
+  primary: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
   secondary: PropTypes.string,
-  iconPrimary: PropTypes.object,
+  iconPrimary: PropTypes.elementType,
   footerData: PropTypes.string,
-  iconFooter: PropTypes.object,
-  color: PropTypes.string
+  iconFooter: PropTypes.elementType,
+  color: PropTypes.string,
+  onClick: PropTypes.func
 };
 
 export default ReportCard;

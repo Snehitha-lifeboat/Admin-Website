@@ -1,48 +1,129 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-
-// material-ui
-import { Card, CardHeader, CardContent, Divider, Grid, Typography } from '@mui/material';
-
-// project import
+import {
+  Card,
+  CardHeader,
+  CardContent,
+  Divider,
+  Typography,
+  Table,
+  TableHead,
+  TableRow,
+  TableCell,
+  TableBody,
+  TableContainer,
+  Paper,
+  TablePagination,
+} from '@mui/material';
+import { collection, getDocs } from 'firebase/firestore';
 import Breadcrumb from 'component/Breadcrumb';
-import { gridSpacing } from 'config.js';
-
-// ==============================|| SAMPLE PAGE ||============================== //
+import { db } from '../../firebaseoptions';
 
 const SamplePage = () => {
+  const [leads, setLeads] = useState([]);
+  const [page, setPage] = useState(0);
+  const [rowsPerPage, setRowsPerPage] = useState(10);
+
+  useEffect(() => {
+    const fetchLeads = async () => {
+      const leadsRef = collection(db, 'leads');
+      const snapshot = await getDocs(leadsRef);
+      const leadsData = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+      setLeads(leadsData);
+    };
+    fetchLeads();
+  }, []);
+
+  // Handle page change
+  const handleChangePage = (event, newPage) => {
+    setPage(newPage);
+  };
+
+  // Handle rows per page change
+  const handleChangeRowsPerPage = (event) => {
+    setRowsPerPage(parseInt(event.target.value, 10));
+    setPage(0); // Reset to first page
+  };
+
+  // Slice the leads for current page
+  const paginatedLeads = leads.slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage);
+
   return (
     <>
-      <Breadcrumb title="Sample Page">
+      <Breadcrumb title="Leads">
         <Typography component={Link} to="/" variant="subtitle2" color="inherit" className="link-breadcrumb">
           Home
         </Typography>
         <Typography variant="subtitle2" color="primary" className="link-breadcrumb">
-          Sample Page
+          Leads
         </Typography>
       </Breadcrumb>
-      <Grid container spacing={gridSpacing}>
-        <Grid item>
-          <Card>
-            <CardHeader
-              title={
-                <Typography component="div" className="card-header">
-                  Sample Page
-                </Typography>
-              }
+
+      {/* <Card elevation={2}> */}
+        <CardHeader title={<Typography variant="h6">Leads</Typography>} />
+        <Divider />
+        <CardContent sx={{ p: 0 }}>
+          <TableContainer component={Paper}
+          sx={{
+    overflowX: 'auto',
+    scrollbarWidth: 'none',           // Firefox
+    '&::-webkit-scrollbar': {
+      display: 'none',                // Chrome, Safari
+    },
+    '-ms-overflow-style': 'none',     // IE and Edge
+  }}>
+            <Table size="small">
+              <TableHead>
+                <TableRow sx={{ backgroundColor: '#f5f5f5' }}>
+                  <TableCell><strong>Name</strong></TableCell>
+                  <TableCell><strong>Email</strong></TableCell>
+                  <TableCell><strong>Mobile</strong></TableCell>
+                  <TableCell><strong>Fee</strong></TableCell>
+                  <TableCell><strong>Source</strong></TableCell>
+                  <TableCell><strong>Status</strong></TableCell>
+                  <TableCell><strong>Created By</strong></TableCell>
+                  <TableCell><strong>Created At</strong></TableCell>
+                  <TableCell><strong>Remarks</strong></TableCell>
+                </TableRow>
+              </TableHead>
+              <TableBody>
+                {paginatedLeads.map((lead, index) => (
+                  <TableRow key={lead.id} sx={{ backgroundColor: index % 2 === 0 ? '#fafafa' : '#fff' }}>
+                    <TableCell>{lead.name}</TableCell>
+                    <TableCell>{lead.email}</TableCell>
+                    <TableCell>{lead.mobile}</TableCell>
+                    <TableCell>{lead.fee}</TableCell>
+                    <TableCell>{lead.source}</TableCell>
+                    <TableCell>{lead.status}</TableCell>
+                    <TableCell>{lead.createdBy}</TableCell>
+                    <TableCell>
+                      {lead.createdAt?.toDate ? lead.createdAt.toDate().toLocaleString() : 'N/A'}
+                    </TableCell>
+                    <TableCell>
+                      <ul style={{ margin: 0, paddingLeft: 16 }}>
+                        {lead.remarks?.map((r, index) => (
+                          <li key={index}>{r}</li>
+                        ))}
+                      </ul>
+                    </TableCell>
+                  </TableRow>
+                ))}
+              </TableBody>
+            </Table>
+
+            {/* Pagination */}
+            <TablePagination
+              rowsPerPageOptions={[5, 10, 25]}
+              component="div"
+              count={leads.length}
+              rowsPerPage={rowsPerPage}
+              page={page}
+              onPageChange={handleChangePage}
+              onRowsPerPageChange={handleChangeRowsPerPage}
             />
-            <Divider />
-            <CardContent>
-              <Typography variant="body2">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
-                Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure
-                dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiatnulla pariatur. Excepteur sint occaecat cupidatat non
-                proident, sunt in culpa qui officia deserunt mollitanim id est laborum.
-              </Typography>
-            </CardContent>
-          </Card>
-        </Grid>
-      </Grid>
+          </TableContainer>
+        </CardContent>
+      
     </>
   );
 };
