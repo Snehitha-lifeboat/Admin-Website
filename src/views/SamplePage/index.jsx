@@ -174,7 +174,7 @@ const SamplePage = () => {
 
           {/* <CardHeader title={<Typography variant="h6">Leads</Typography>} /> */}
           <Divider />
-          {/* <CardContent sx={{ p: 0 }}> */}
+          <CardContent sx={{ p: 0 }}>
             <TableContainer component={Paper}>
               <Table size="small">
                 <TableHead>
@@ -228,7 +228,7 @@ const SamplePage = () => {
                 onRowsPerPageChange={handleChangeRowsPerPage}
               />
             </TableContainer>
-          {/* </CardContent> */}
+          </CardContent>
 
           {/* Delete confirmation dialog */}
           <Dialog open={confirmOpen} onClose={() => setConfirmOpen(false)}>
