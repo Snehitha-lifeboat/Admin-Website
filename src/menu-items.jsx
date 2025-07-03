@@ -76,6 +76,14 @@ export default {
 
         },
         {
+          id: 'users',
+          title: 'Users',
+          type: 'item',
+          url: '/Users/usersPage',
+           icon: icons['NewsIcon']
+
+        },
+        {
           id: 'auth',
           title: 'Authentication',
           type: 'collapse',

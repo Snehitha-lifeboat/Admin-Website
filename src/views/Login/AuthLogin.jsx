@@ -155,7 +155,7 @@ const AuthLogin = ({ ...rest }) => {
                       onMouseDown={handleMouseDownPassword}
                       edge="end"
                     >
-                      {/* {showPassword ? <Visibility /> : <VisibilityOff />} */}
+                      {showPassword ? <Visibility /> : <VisibilityOff />}
                     </IconButton>
                   </InputAdornment>
                 }

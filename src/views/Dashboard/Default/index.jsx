@@ -122,7 +122,7 @@ const navigate = useNavigate();
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
         <Grid container spacing={gridSpacing}>
-          <Grid item lg={2} md={3} sm={4} xs={12}>
+          <Grid item  md={3} sm={4} xs={12}>
             <ReportCard
               primary={leadCount}
               secondary="Total Leads"
@@ -145,7 +145,7 @@ const navigate = useNavigate();
                onClick={() => navigate('/Courses/coursesPage')} 
             />
           </Grid>
-          <Grid item lg={1.5} md={3} sm={4} xs={12}>
+          <Grid item lg={2} md={3} sm={4} xs={12}>
             <ReportCard
               primary={newsCount}
               secondary="News"
@@ -157,7 +157,7 @@ const navigate = useNavigate();
             />
           </Grid>
           {!isAdmin && (
-          <Grid item lg={2} md={3} sm={4} xs={12}>
+          <Grid item  md={3} sm={4} xs={12}>
             <ReportCard
               primary={studentCount}
               secondary="Students"
@@ -165,6 +165,7 @@ const navigate = useNavigate();
               footerData="students Count"
               iconPrimary={GroupsTwoTone}
               iconFooter={TrendingUpIcon}
+               onClick={() => navigate('/Users/usersPage')} 
             />
           </Grid>
             )}

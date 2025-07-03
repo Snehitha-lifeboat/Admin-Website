@@ -5,11 +5,13 @@ import MainLayout from 'layout/MainLayout';
 import Loadable from 'component/Loadable';
 
 
+
 const DashboardDefault = Loadable(lazy(() => import('views/Dashboard/Default')));
 const UtilsTypography = Loadable(lazy(() => import('views/Utils/Typography')));
 const SamplePage = Loadable(lazy(() => import('views/SamplePage/index1')));
 const CoursesPage=Loadable(lazy(()=>import('views/Courses/coursesPage')));
-const NewsPage=Loadable(lazy(()=>import('views/News/newsPage')))
+const NewsPage=Loadable(lazy(()=>import('views/News/newsPage')));
+const UsersPage=Loadable(lazy(()=>import('views/Users/usersPage')))
 // ==============================|| MAIN ROUTES ||============================== //
 
 const MainRoutes = {
@@ -27,7 +29,8 @@ const MainRoutes = {
     { path: '/utils/util-typography', element: <UtilsTypography /> },
     { path: '/sample-page', element: <SamplePage /> },
     {path:'/Courses/coursesPage', element:<CoursesPage/>},
-    {path:'/News/newsPage', element:<NewsPage/>}
+    {path:'/News/newsPage', element:<NewsPage/>},
+    {path:'/Users/usersPage',element:<UsersPage/>}
   ]
 };
 
