@@ -1,5 +1,5 @@
 // action - state management
-import * as actionTypes from './actions';
+import * as actionTypes from './actions1';
 
 // ==============================|| CUSTOMIZATION REDUCER ||============================== //
 
@@ -8,7 +8,7 @@ export const initialState = {
   navType: ''
 };
 
-const customizationReducer = (state = initialState, action) => {
+const customizationReducer1 = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.MENU_OPEN:
       return {
@@ -25,4 +25,4 @@ const customizationReducer = (state = initialState, action) => {
   }
 };
 
-export default customizationReducer;
+export default customizationReducer1;

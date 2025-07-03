@@ -1,8 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
-  Card,
-  CardHeader,
   CardContent,
   Divider,
   Typography,
@@ -18,15 +16,30 @@ import {
   Dialog,
   DialogActions,
   DialogTitle,
-  Button
+  Button,
+  Container,
+  Grid,
+  TextField,
+  FormControl,
+  InputLabel,
+  Select,
+  MenuItem
 } from '@mui/material';
 import { Edit, Delete } from '@mui/icons-material';
-import { collection, getDocs, addDoc, updateDoc, deleteDoc, doc } from 'firebase/firestore';
+import {
+  collection,
+  getDocs,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  doc
+} from 'firebase/firestore';
 import Breadcrumb from 'component/Breadcrumb';
 import { db } from '../../firebaseoptions';
 
 const SamplePage = () => {
   const [leads, setLeads] = useState([]);
+  const [courses, setCourses] = useState([]);
   const [page, setPage] = useState(0);
   const [rowsPerPage, setRowsPerPage] = useState(10);
   const [viewMode, setViewMode] = useState('table');
@@ -41,6 +54,7 @@ const SamplePage = () => {
     fee: '',
     source: '',
     status: '',
+    courses: '',
     createdBy: '',
     remarks: ''
   });
@@ -52,8 +66,14 @@ const SamplePage = () => {
     setLeads(leadsData);
   };
 
+  const fetchCourses = async () => {
+    const coursesSnap = await getDocs(collection(db, 'courses'));
+    setCourses(coursesSnap.docs.map(doc => doc.data().name));
+  };
+
   useEffect(() => {
     fetchLeads();
+    fetchCourses();
   }, []);
 
   const handleInputChange = (e) => {
@@ -83,6 +103,7 @@ const SamplePage = () => {
         fee: '',
         source: '',
         status: '',
+        courses: '',
         createdBy: '',
         remarks: ''
       });
@@ -135,44 +156,154 @@ const SamplePage = () => {
       </Breadcrumb>
 
       {viewMode === 'form' ? (
-        <form onSubmit={handleCreateOrUpdateLead} style={{ maxWidth: 600, margin: '0 auto', padding: 20 }}>
-          <Typography variant="h6" gutterBottom>{selectedId ? 'Update Lead' : 'Add New Lead'}</Typography>
-          {['name', 'email', 'mobile', 'fee', 'source', 'status', 'createdBy', 'remarks'].map(field => (
-            <div key={field} style={{ marginBottom: 16 }}>
-              <label style={{ display: 'block', marginBottom: 4 }}>
-                {field.charAt(0).toUpperCase() + field.slice(1)}
-              </label>
-              <input
-                type="text"
-                name={field}
-                value={formData[field]}
-                onChange={handleInputChange}
-                style={{ width: '100%', padding: 8, border: '1px solid #ccc', borderRadius: 4 }}
-              />
-            </div>
-          ))}
-          <div style={{ display: 'flex', gap: 10 }}>
-            <button type="submit" style={{ padding: '10px 20px', background: 'green', color: 'white', border: 'none', borderRadius: 4 }}>
-              {selectedId ? 'Update' : 'Submit'}
-            </button>
-            <button type="button" onClick={() => { setFormData({ name: '', email: '', mobile: '', fee: '', source: '', status: '', createdBy: '', remarks: '' }); setSelectedId(null); setViewMode('table'); }}
-              style={{ padding: '10px 20px', background: 'gray', color: 'white', border: 'none', borderRadius: 4 }}>
-              Cancel
-            </button>
-          </div>
-        </form>
+        
+        <form onSubmit={handleCreateOrUpdateLead}>
+  <Paper elevation={3} sx={{ maxWidth: 700, margin: 'auto', p: 3 }}>
+    <Typography variant="h5" gutterBottom>
+      {selectedId ? 'Update Lead' : 'Add New Lead'}
+    </Typography>
+
+    <Grid container spacing={2}>
+      {['name', 'email', 'mobile', 'fee'].map((field) => (
+        <Grid item xs={12} sm={6} key={field}>
+          <TextField
+            label={field.charAt(0).toUpperCase() + field.slice(1)}
+            name={field}
+            value={formData[field]}
+            onChange={handleInputChange}
+            fullWidth
+          />
+        </Grid>
+      ))}
+
+      <Grid item xs={12} sm={6}>
+        <FormControl fullWidth>
+          <InputLabel>Source</InputLabel>
+          <Select
+            name="source"
+            value={formData.source}
+            onChange={handleInputChange}
+            label="Source"
+          >
+            {[
+              'justdial', 'websitechat', 'facebook', 'inbound', 'walkin',
+              'referral', 'jd-hnk', 'organic', 'instagram', 'local',
+              'google forms', 'meta', 'insta100% job guarntee'
+            ].map((src) => (
+              <MenuItem key={src} value={src}>{src}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Grid>
+
+      <Grid item xs={12} sm={6}>
+        <FormControl fullWidth>
+          <InputLabel>Status</InputLabel>
+          <Select
+            name="status"
+            value={formData.status}
+            onChange={handleInputChange}
+            label="Status"
+          >
+            {[
+              'Lead', 'irrelvant', 'retry', 'folowup', 'demo ready', 'demo attended',
+              'interested', 'notintereseted', 'converted', 'missed', 'offline',
+              'duplicate', 'not reponded', 'declined', 'ready to join', 'company', 'courses'
+            ].map((stat) => (
+              <MenuItem key={stat} value={stat}>{stat}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Grid>
+
+      <Grid item xs={12} sm={6}>
+        <FormControl fullWidth>
+          <InputLabel>Course</InputLabel>
+          <Select
+            name="courses"
+            value={formData.courses}
+            onChange={handleInputChange}
+            label="Course"
+          >
+            {courses.map((course, idx) => (
+              <MenuItem key={idx} value={course}>{course}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Grid>
+
+      <Grid item xs={12} sm={6}>
+        <FormControl fullWidth>
+          <InputLabel>Created By</InputLabel>
+          <Select
+            name="createdBy"
+            value={formData.createdBy}
+            onChange={handleInputChange}
+            label="Created By"
+          >
+            {['harshini', 'mahitha'].map((user) => (
+              <MenuItem key={user} value={user}>{user}</MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+      </Grid>
+
+      <Grid item xs={12}>
+        <TextField
+          label="Remarks (comma separated)"
+          name="remarks"
+          value={formData.remarks}
+          onChange={handleInputChange}
+          fullWidth
+        />
+      </Grid>
+
+      <Grid item xs={12} display="flex" justifyContent="flex-end" gap={2}>
+        <Button type="submit" variant="contained" color="success">
+          {selectedId ? 'Update' : 'Submit'}
+        </Button>
+        <Button
+          type="button"
+          variant="outlined"
+          color="secondary"
+          onClick={() => {
+            setFormData({
+              name: '',
+              email: '',
+              mobile: '',
+              fee: '',
+              source: '',
+              status: '',
+              courses: '',
+              createdBy: '',
+              remarks: ''
+            });
+            setSelectedId(null);
+            setViewMode('table');
+          }}
+        >
+          Cancel
+        </Button>
+      </Grid>
+    </Grid>
+  </Paper>
+</form>
+       
       ) : (
         <>
           <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: 16 }}>
             <button
-              onClick={() => { setViewMode('form'); setSelectedId(null); setFormData({ name: '', email: '', mobile: '', fee: '', source: '', status: '', createdBy: '', remarks: '' }); }}
-              style={{ padding: '12px 12px', fontWeight: 'bold', background: '#1976d2', color: '#fff', border: 'none', borderRadius: 4,}}
+              onClick={() => {
+                setViewMode('form');
+                setSelectedId(null);
+                setFormData({ name: '', email: '', mobile: '', fee: '', source: '', status: '', courses: '', createdBy: '', remarks: '' });
+              }}
+              style={{ padding: '12px 12px', fontWeight: 'bold', background: '#1976d2', color: '#fff', border: 'none', borderRadius: 4 }}
             >
               + Create
             </button>
           </div>
 
-          {/* <CardHeader title={<Typography variant="h6">Leads</Typography>} /> */}
           <Divider />
           <CardContent sx={{ p: 0 }}>
             <TableContainer component={Paper}>
@@ -185,6 +316,7 @@ const SamplePage = () => {
                     <TableCell><strong>Fee</strong></TableCell>
                     <TableCell><strong>Source</strong></TableCell>
                     <TableCell><strong>Status</strong></TableCell>
+                    {/* <TableCell><strong>Courses</strong></TableCell> */}
                     <TableCell><strong>Created By</strong></TableCell>
                     <TableCell><strong>Created At</strong></TableCell>
                     <TableCell><strong>Remarks</strong></TableCell>
@@ -200,12 +332,13 @@ const SamplePage = () => {
                       <TableCell>{lead.fee}</TableCell>
                       <TableCell>{lead.source}</TableCell>
                       <TableCell>{lead.status}</TableCell>
+                      {/* <TableCell>{lead.courses}</TableCell> */}
                       <TableCell>{lead.createdBy}</TableCell>
                       <TableCell>{lead.createdAt?.toDate ? lead.createdAt.toDate().toLocaleString() : 'N/A'}</TableCell>
                       <TableCell>
                         <ul style={{ margin: 0, paddingLeft: 16 }}>
-                          {lead.remarks?.map((r, index) => (
-                            <li key={index}>{r}</li>
+                          {lead.remarks?.map((r, idx) => (
+                            <li key={idx}>{r}</li>
                           ))}
                         </ul>
                       </TableCell>
@@ -230,7 +363,6 @@ const SamplePage = () => {
             </TableContainer>
           </CardContent>
 
-          {/* Delete confirmation dialog */}
           <Dialog open={confirmOpen} onClose={() => setConfirmOpen(false)}>
             <DialogTitle>Are you sure you want to delete?</DialogTitle>
             <DialogActions>

@@ -5,20 +5,24 @@ import AccountTreeOutlinedIcon from '@mui/icons-material/AccountTreeOutlined';
 import AppsOutlinedIcon from '@mui/icons-material/AppsOutlined';
 import ContactSupportOutlinedIcon from '@mui/icons-material/ContactSupportOutlined';
 import BlockOutlinedIcon from '@mui/icons-material/BlockOutlined';
-import ChromeReaderModeOutlinedIcon from '@mui/icons-material/ChromeReaderModeOutlined';
+import PeopleAltOutlined from "@mui/icons-material/PeopleAltOutlined";
 import SecurityOutlinedIcon from '@mui/icons-material/SecurityOutlined';
 import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
+import MenuBookOutlined from '@mui/icons-material/MenuBookOutlined';
+import ArticleOutlined from '@mui/icons-material/ArticleOutlined';
 
 const icons = {
   NavigationOutlinedIcon: NavigationOutlinedIcon,
   HomeOutlinedIcon: HomeOutlinedIcon,
-  ChromeReaderModeOutlinedIcon: ChromeReaderModeOutlinedIcon,
+LeadsIcon: PeopleAltOutlined,
+CoursesIcon: MenuBookOutlined,
   HelpOutlineOutlinedIcon: HelpOutlineOutlinedIcon,
   SecurityOutlinedIcon: SecurityOutlinedIcon,
   AccountTreeOutlinedIcon: AccountTreeOutlinedIcon,
   BlockOutlinedIcon: BlockOutlinedIcon,
   AppsOutlinedIcon: AppsOutlinedIcon,
-  ContactSupportOutlinedIcon: ContactSupportOutlinedIcon
+  ContactSupportOutlinedIcon: ContactSupportOutlinedIcon,
+  NewsIcon: ArticleOutlined
 };
 
 // ==============================|| MENU ITEMS ||============================== //
@@ -54,7 +58,22 @@ export default {
           title: 'Leads',
           type: 'item',
           url: '/sample-page',
-          icon: icons['ChromeReaderModeOutlinedIcon']
+          icon:  icons['LeadsIcon']
+        },
+         {
+          id: 'courses',
+          title: 'Courses',
+          type: 'item',
+          url: '/Courses/coursesPage',
+            icon: icons['CoursesIcon']
+        },
+        {
+          id: 'news',
+          title: 'News',
+          type: 'item',
+          url: '/News/newsPage',
+           icon: icons['NewsIcon']
+
         },
         {
           id: 'auth',

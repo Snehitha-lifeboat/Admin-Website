@@ -10,7 +10,7 @@ import { Avatar, Chip, ListItemButton, ListItemIcon, ListItemText, Typography } 
 import { useSelector, useDispatch } from 'react-redux';
 
 // project import
-import * as actionTypes from 'store/actions';
+import * as actionTypes from 'store/actions1';
 
 // assets
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';

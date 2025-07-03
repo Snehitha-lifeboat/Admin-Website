@@ -122,7 +122,7 @@ const navigate = useNavigate();
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
         <Grid container spacing={gridSpacing}>
-          <Grid item lg={3} sm={6} xs={12}>
+          <Grid item lg={2} md={3} sm={4} xs={12}>
             <ReportCard
               primary={leadCount}
               secondary="Total Leads"
@@ -134,7 +134,7 @@ const navigate = useNavigate();
               
             />
           </Grid>
-          <Grid item lg={3} sm={6} xs={12}>
+          <Grid item lg={2}  md={3} sm={4} xs={12}>
             <ReportCard
               primary={courseCount}
               secondary="Courses"
@@ -142,9 +142,10 @@ const navigate = useNavigate();
               footerData=" Courses Count"
               iconPrimary={CalendarTodayTwoTone}
               iconFooter={TrendingDownIcon}
+               onClick={() => navigate('/Courses/coursesPage')} 
             />
           </Grid>
-          <Grid item lg={3} sm={6} xs={12}>
+          <Grid item lg={1.5} md={3} sm={4} xs={12}>
             <ReportCard
               primary={newsCount}
               secondary="News"
@@ -152,10 +153,11 @@ const navigate = useNavigate();
               footerData="Daily News Count"
               iconPrimary={ArticleTwoTone}
               iconFooter={TrendingUpIcon}
+              onClick={() => navigate('/News/newsPage')} 
             />
           </Grid>
           {!isAdmin && (
-          <Grid item lg={3} sm={6} xs={12}>
+          <Grid item lg={2} md={3} sm={4} xs={12}>
             <ReportCard
               primary={studentCount}
               secondary="Students"
