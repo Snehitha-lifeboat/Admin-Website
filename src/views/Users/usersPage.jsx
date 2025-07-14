@@ -107,25 +107,24 @@ const UsersPage = () => {
   };
 
   const handleEdit = (user) => {
-    console.log('Editing user:', user); // Debug log
-    console.log('Document ID (docId):', user.docId); // Should be Firebase doc ID
-    console.log('Student ID (id):', user.id); // Should be student ID like LB-PFS26/01
-    
-    // Prefill all fields based on user data - mapping Firebase fields correctly
+    console.log('Editing user:', user); 
+    console.log('Document ID (docId):', user.docId); 
+    console.log('Student ID (id):', user.id); 
+
     const newFormData = {
-      name: user.name || '', // Student/Admin name
+      name: user.name || '',
       email: user.email || '',
       password: user.password || '',
-      phone: user.phone || '', // Firebase field is 'phone'
-      id: user.id || '', // Firebase field is 'id' (student ID)
+      phone: user.phone || '',
+      id: user.id || '', 
       fee: user.fee || '',
-      course: user.course || '', // Course name from Firebase 'name' field
+      course: user.course || '', 
       isAdmin: user.isAdmin || false
     };
     
     setFormData(newFormData);
-    setSelectedId(user.docId); // Use Firebase document ID, not user's student ID
-    console.log('Selected ID set to:', user.docId); // Debug log
+    setSelectedId(user.docId); 
+    console.log('Selected ID set to:', user.docId); 
     setViewMode('form');
   };
 

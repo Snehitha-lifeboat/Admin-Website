@@ -109,6 +109,7 @@ const AuthLogin = ({ ...rest }) => {
               await auth.signOut();
               setFirebaseError('Access denied');
             }
+            
           } catch (error) {
             console.error('Firebase login error:', error);
             setFirebaseError(error.message);

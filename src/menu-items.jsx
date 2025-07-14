@@ -10,6 +10,10 @@ import SecurityOutlinedIcon from '@mui/icons-material/SecurityOutlined';
 import HelpOutlineOutlinedIcon from '@mui/icons-material/HelpOutlineOutlined';
 import MenuBookOutlined from '@mui/icons-material/MenuBookOutlined';
 import ArticleOutlined from '@mui/icons-material/ArticleOutlined';
+import GroupOutlinedIcon from '@mui/icons-material/GroupOutlined';
+import PaidOutlinedIcon from '@mui/icons-material/PaidOutlined'; 
+import Diversity3OutlinedIcon from '@mui/icons-material/Diversity3Outlined';
+
 
 const icons = {
   NavigationOutlinedIcon: NavigationOutlinedIcon,
@@ -22,7 +26,11 @@ CoursesIcon: MenuBookOutlined,
   BlockOutlinedIcon: BlockOutlinedIcon,
   AppsOutlinedIcon: AppsOutlinedIcon,
   ContactSupportOutlinedIcon: ContactSupportOutlinedIcon,
-  NewsIcon: ArticleOutlined
+  NewsIcon: ArticleOutlined,
+  GroupsIcon:GroupOutlinedIcon,
+ PaidOutlinedIcon:PaidOutlinedIcon,
+ Diversity3OutlinedIcon:Diversity3OutlinedIcon
+
 };
 
 // ==============================|| MENU ITEMS ||============================== //
@@ -80,9 +88,34 @@ export default {
           title: 'Users',
           type: 'item',
           url: '/Users/usersPage',
-           icon: icons['NewsIcon']
+           icon: icons['GroupsIcon']
 
         },
+         {
+          id: 'revenu',
+          title: 'Revenu',
+          type: 'item',
+          url: '/Revenu/revenuPage',
+           icon: icons['PaidOutlinedIcon']
+
+        },
+        {
+          id: 'groups',
+          title: 'Groups',
+          type: 'item',
+          url: '/Groups/groupsPage',
+           icon: icons['Diversity3OutlinedIcon']
+
+        },
+        {
+          id: 'trainers',
+          title: 'Trainers',
+          type: 'item',
+          url: '/Trainers/trainersPage',
+           icon: icons['Diversity3OutlinedIcon']
+
+        },
+
         {
           id: 'auth',
           title: 'Authentication',

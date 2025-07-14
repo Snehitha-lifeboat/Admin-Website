@@ -45,6 +45,7 @@ const Default = () => {
 const [courseCount, setCourseCount]=useState(0);
 const[newsCount, setNewsCount]=useState(0);
  const [studentCount, setStudentCount] = useState(0);
+ const[trainerCount,setTrainerCount]=useState(0)
   const [isAdmin, setIsAdmin] = useState(false); 
 const navigate = useNavigate();
 
@@ -117,7 +118,18 @@ const navigate = useNavigate();
     }
   }, [isAdmin]);
 
+useEffect(() => {
+    const fetchTrainerCount = async () => {
+      try {
+        const snapshot = await getDocs(collection(db, 'trainers')); // Your Firestore collection
+        setTrainerCount(snapshot.size);
+      } catch (error) {
+        console.error('Error fetching trainers count:', error);
+      }
+    };
 
+    fetchTrainerCount();
+  }, []);
   return (
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
@@ -141,7 +153,7 @@ const navigate = useNavigate();
               color={theme.palette.info.main}
               footerData=" Courses Count"
               iconPrimary={CalendarTodayTwoTone}
-              iconFooter={TrendingDownIcon}
+              iconFooter={TrendingUpIcon}
                onClick={() => navigate('/Courses/coursesPage')} 
             />
           </Grid>
@@ -150,14 +162,14 @@ const navigate = useNavigate();
               primary={newsCount}
               secondary="News"
               color={theme.palette.success.main}
-              footerData="Daily News Count"
+              footerData="News Count"
               iconPrimary={ArticleTwoTone}
               iconFooter={TrendingUpIcon}
               onClick={() => navigate('/News/newsPage')} 
             />
           </Grid>
           {!isAdmin && (
-          <Grid item  md={3} sm={4} xs={12}>
+          <Grid item lg={2}  md={3} sm={4} xs={12}>
             <ReportCard
               primary={studentCount}
               secondary="Students"
@@ -169,7 +181,18 @@ const navigate = useNavigate();
             />
           </Grid>
             )}
-        </Grid>
+        </Grid><br></br>
+         <Grid item  lg={2} md={3} sm={4} xs={12}>
+            <ReportCard
+              primary={trainerCount}
+              secondary="Trainers"
+              color={theme.palette.success.main}
+              footerData="Trainers Count"
+              iconPrimary={ArticleTwoTone}
+              iconFooter={TrendingUpIcon}
+              onClick={() => navigate('/Trainers/trainersPage')} 
+            />
+          </Grid>
       </Grid>
       <Grid item xs={12}>
         <Grid container spacing={gridSpacing}>

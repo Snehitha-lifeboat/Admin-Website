@@ -6,12 +6,18 @@ import Loadable from 'component/Loadable';
 
 
 
+
+
+
 const DashboardDefault = Loadable(lazy(() => import('views/Dashboard/Default')));
 const UtilsTypography = Loadable(lazy(() => import('views/Utils/Typography')));
 const SamplePage = Loadable(lazy(() => import('views/SamplePage/index1')));
 const CoursesPage=Loadable(lazy(()=>import('views/Courses/coursesPage')));
 const NewsPage=Loadable(lazy(()=>import('views/News/newsPage')));
-const UsersPage=Loadable(lazy(()=>import('views/Users/usersPage')))
+const UsersPage=Loadable(lazy(()=>import('views/Users/usersPage')));
+const RevenuPage=Loadable(lazy(()=>import('views/Revenu/revenuPage')));
+const GroupsPage=Loadable(lazy(()=>import('views/Groups/groupsPage')));
+const TrainersPage=Loadable(lazy(()=>import('views/Trainers/trainersPage')))
 // ==============================|| MAIN ROUTES ||============================== //
 
 const MainRoutes = {
@@ -30,7 +36,10 @@ const MainRoutes = {
     { path: '/sample-page', element: <SamplePage /> },
     {path:'/Courses/coursesPage', element:<CoursesPage/>},
     {path:'/News/newsPage', element:<NewsPage/>},
-    {path:'/Users/usersPage',element:<UsersPage/>}
+    {path:'/Users/usersPage',element:<UsersPage/>},
+    {path:'/Revenu/revenuPage', element:<RevenuPage/>},
+    {path:'/Groups/groupsPage', element:<GroupsPage/>},
+    {path:'/Trainers/trainersPage', element:<TrainersPage/>}
   ]
 };
 
