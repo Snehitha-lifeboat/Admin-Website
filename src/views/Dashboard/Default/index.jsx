@@ -136,7 +136,7 @@ useEffect(() => {
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
         <Grid container spacing={gridSpacing}>
-          <Grid item  md={3} sm={4} xs={12}>
+          <Grid item lg={2} md={3} sm={4} xs={12}>
             <ReportCard
               primary={leadCount}
               secondary="Total Leads"
