@@ -97,27 +97,27 @@ const ProfileSection = () => {
                 >
                   <ListItemButton selected={selectedIndex === 0} onClick={(event) => handleListItemClick(event, 0)}>
                     <ListItemIcon>
-                      <SettingsTwoToneIcon />
+                      {/* <SettingsTwoToneIcon /> */}
                     </ListItemIcon>
-                    <ListItemText primary="Settings" />
+                    {/* <ListItemText primary="Settings" /> */}
                   </ListItemButton>
                   <ListItemButton selected={selectedIndex === 1} onClick={(event) => handleListItemClick(event, 1)}>
-                    <ListItemIcon>
+                    {/* <ListItemIcon>
                       <PersonTwoToneIcon />
                     </ListItemIcon>
-                    <ListItemText primary="Profile" />
+                    <ListItemText primary="Profile" /> */}
                   </ListItemButton>
                   <ListItemButton selected={selectedIndex === 2} onClick={(event) => handleListItemClick(event, 2)}>
-                    <ListItemIcon>
+                    {/* <ListItemIcon>
                       <DraftsTwoToneIcon />
                     </ListItemIcon>
-                    <ListItemText primary="My Messages" />
+                    <ListItemText primary="My Messages" /> */}
                   </ListItemButton>
                   <ListItemButton selected={selectedIndex === 3} onClick={(event) => handleListItemClick(event, 3)}>
-                    <ListItemIcon>
+                    {/* <ListItemIcon>
                       <LockOpenTwoTone />
                     </ListItemIcon>
-                    <ListItemText primary="Lock Screen" />
+                    <ListItemText primary="Lock Screen" /> */}
                   </ListItemButton>
                   {/* <ListItemButton selected={selectedIndex === 4}>
                     <ListItemIcon>

@@ -19,10 +19,12 @@ import TrendingUpIcon from '@mui/icons-material/TrendingUp';
 import TrendingDownIcon from '@mui/icons-material/TrendingDown';
 import EmojiPeopleTwoTone from '@mui/icons-material/EmojiPeopleTwoTone';
 import ArticleTwoTone from '@mui/icons-material/ArticleTwoTone';
-// import ThumbUpAltTwoTone from '@mui/icons-material/ThumbUpAltTwoTone';
+
+// import Thumb from '@mui/icons-material/ThumbAltTwoTone';
 import GroupsTwoTone from '@mui/icons-material/GroupsTwoTone'
 import CalendarTodayTwoTone from '@mui/icons-material/CalendarTodayTwoTone';
 import { useNavigate } from 'react-router-dom';
+// import { ThumbUpOffAltTwoTone } from '@mui/icons-material';
 
 // custom style
 const FlatCardBlock = styled((props) => <Grid item sm={6} xs={12} {...props} />)(({ theme }) => ({
@@ -181,26 +183,29 @@ useEffect(() => {
             />
           </Grid>
             )}
-        </Grid><br></br>
+        </Grid>
+        <Grid container spacing={2} mt={1}>
          <Grid item  lg={2} md={3} sm={4} xs={12}>
             <ReportCard
               primary={trainerCount}
               secondary="Trainers"
-              color={theme.palette.success.main}
+              // color={theme.palette.emphasis.main}
+              color="#9c27b0"
               footerData="Trainers Count"
               iconPrimary={ArticleTwoTone}
               iconFooter={TrendingUpIcon}
               onClick={() => navigate('/Trainers/trainersPage')} 
             />
           </Grid>
+          </Grid>
       </Grid>
-      <Grid item xs={12}>
+     <Grid item xs={12}>
         <Grid container spacing={gridSpacing}>
           <Grid item lg={8} xs={12}>
             <Grid container spacing={gridSpacing}>
               <Grid item xs={12} sm={6}>
                 <Grid container spacing={gridSpacing}>
-                  <Grid item xs={12}>
+                  {/* <Grid item xs={12}>
                     <SalesLineCard
                       chartData={SalesLineCardData}
                       title="Sales Per Day"
@@ -217,8 +222,8 @@ useEffect(() => {
                         }
                       ]}
                     />
-                  </Grid>
-                  <Grid item xs={12} sx={{ display: { md: 'block', sm: 'none' } }}>
+                  </Grid> */}
+                  {/* <Grid item xs={12} sx={{ display: { md: 'block', sm: 'none' } }}>
                     <Card>
                       <CardContent sx={{ p: '0 !important' }}>
                         <Grid container alignItems="center" spacing={0}>
@@ -253,16 +258,16 @@ useEffect(() => {
                         </Grid>
                       </CardContent>
                     </Card>
-                  </Grid>
+                  </Grid> */}
                 </Grid>
               </Grid>
               <Grid item xs={12} sm={6}>
-                <RevenuChartCard chartData={RevenuChartCardData} />
+                {/* <RevenuChartCard chartData={RevenuChartCardData} /> */}
               </Grid>
             </Grid>
           </Grid>
           <Grid item lg={4} xs={12}>
-            <Card>
+            {/* <Card>
               <CardHeader
                 title={
                   <Typography component="div" className="card-header">
@@ -311,7 +316,7 @@ useEffect(() => {
                       <Grid item>
                         <Typography variant="body2" align="right">
                           20%
-                        </Typography>
+                        </Typography> 
                       </Grid>
                       <Grid item xs={12}>
                         <LinearProgress variant="determinate" aria-label="Referral" value={20} color="primary" />
@@ -350,7 +355,7 @@ useEffect(() => {
                   </Grid>
                 </Grid>
               </CardContent>
-            </Card>
+            </Card> */}
           </Grid>
         </Grid>
       </Grid>
