@@ -35,7 +35,7 @@ export default defineConfig(({ mode }) => {
       port: PORT
     },
     base: API_URL,
-    //  base: './', 
+     base: './', 
     plugins: [react(), jsconfigPaths()]
   };
 });
