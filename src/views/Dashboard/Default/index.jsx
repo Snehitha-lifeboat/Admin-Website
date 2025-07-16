@@ -136,67 +136,70 @@ useEffect(() => {
     <Grid container spacing={gridSpacing}>
       <Grid item xs={12}>
         <Grid container spacing={gridSpacing}>
-          <Grid item lg={2} md={3} sm={4} xs={12}>
-            <ReportCard
-              primary={leadCount}
-              secondary="Total Leads"
-              color={theme.palette.warning.main}
-              footerData=" Leads Count "
-              iconPrimary={EmojiPeopleTwoTone}
-              iconFooter={TrendingUpIcon}
-               onClick={() => navigate('/sample-page')} 
-              
-            />
-          </Grid>
-          <Grid item lg={2}  md={3} sm={4} xs={12}>
-            <ReportCard
-              primary={courseCount}
-              secondary="Courses"
-              color={theme.palette.info.main}
-              footerData=" Courses Count"
-              iconPrimary={CalendarTodayTwoTone}
-              iconFooter={TrendingUpIcon}
-               onClick={() => navigate('/Courses/coursesPage')} 
-            />
-          </Grid>
-          <Grid item lg={2} md={3} sm={4} xs={12}>
-            <ReportCard
-              primary={newsCount}
-              secondary="News"
-              color={theme.palette.success.main}
-              footerData="News Count"
-              iconPrimary={ArticleTwoTone}
-              iconFooter={TrendingUpIcon}
-              onClick={() => navigate('/News/newsPage')} 
-            />
-          </Grid>
-          {!isAdmin && (
-          <Grid item lg={2}  md={3} sm={4} xs={12}>
-            <ReportCard
-              primary={studentCount}
-              secondary="Students"
-              color={theme.palette.primary.main}
-              footerData="students Count"
-              iconPrimary={GroupsTwoTone}
-              iconFooter={TrendingUpIcon}
-               onClick={() => navigate('/Users/usersPage')} 
-            />
-          </Grid>
-            )}
-        </Grid>
-        <Grid container spacing={2} mt={1}>
-         <Grid item  lg={2} md={3} sm={4} xs={12}>
-            <ReportCard
-              primary={trainerCount}
-              secondary="Trainers"
-              // color={theme.palette.emphasis.main}
-              color="#9c27b0"
-              footerData="Trainers Count"
-              iconPrimary={ArticleTwoTone}
-              iconFooter={TrendingUpIcon}
-              onClick={() => navigate('/Trainers/trainersPage')} 
-            />
-          </Grid>
+          <Grid container spacing={gridSpacing}>
+  <Grid item lg={2} md={3} sm={4} xs={12}>
+    <ReportCard
+      primary={leadCount}
+      secondary="Total Leads"
+      color={theme.palette.warning.main}
+      footerData="Leads Count"
+      iconPrimary={EmojiPeopleTwoTone}
+      iconFooter={TrendingUpIcon}
+      onClick={() => navigate('/sample-page')}
+    />
+  </Grid>
+
+  <Grid item lg={2} md={3} sm={4} xs={12}>
+    <ReportCard
+      primary={courseCount}
+      secondary="Courses"
+      color={theme.palette.info.main}
+      footerData="Courses Count"
+      iconPrimary={CalendarTodayTwoTone}
+      iconFooter={TrendingUpIcon}
+      onClick={() => navigate('/Courses/coursesPage')}
+    />
+  </Grid>
+
+  <Grid item lg={2} md={3} sm={4} xs={12}>
+    <ReportCard
+      primary={newsCount}
+      secondary="News"
+      color={theme.palette.success.main}
+      footerData="News Count"
+      iconPrimary={ArticleTwoTone}
+      iconFooter={TrendingUpIcon}
+      onClick={() => navigate('/News/newsPage')}
+    />
+  </Grid>
+
+  {!isAdmin && (
+    <Grid item lg={2} md={3} sm={4} xs={12}>
+      <ReportCard
+        primary={studentCount}
+        secondary="Students"
+        color={theme.palette.primary.main}
+        footerData="Students Count"
+        iconPrimary={GroupsTwoTone}
+        iconFooter={TrendingUpIcon}
+        onClick={() => navigate('/Users/usersPage')}
+      />
+    </Grid>
+  )}
+
+  <Grid item lg={2} md={3} sm={4} xs={12}>
+    <ReportCard
+      primary={trainerCount}
+      secondary="Trainers"
+      color="#9c27b0"
+      footerData="Trainers Count"
+      iconPrimary={ArticleTwoTone}
+      iconFooter={TrendingUpIcon}
+      onClick={() => navigate('/Trainers/trainersPage')}
+    />
+  </Grid>
+</Grid>
+
           </Grid>
       </Grid>
      <Grid item xs={12}>
