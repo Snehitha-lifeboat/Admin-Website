@@ -231,8 +231,8 @@ const GroupsPage = () => {
                       <TableCell>{g.course}</TableCell>
                       <TableCell>{g.members}</TableCell>
                       <TableCell>
-                        <IconButton onClick={() => handleEdit(g)}><Edit /></IconButton>
-                        <IconButton onClick={() => handleDeleteConfirm(g.id)}><Delete /></IconButton>
+                        <IconButton color='primary' onClick={() => handleEdit(g)}><Edit /></IconButton>
+                        <IconButton color='error' onClick={() => handleDeleteConfirm(g.id)}><Delete /></IconButton>
                       </TableCell>
                     </TableRow>
                   ))}

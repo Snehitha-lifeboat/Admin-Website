@@ -103,7 +103,8 @@ const AuthLogin = ({ ...rest }) => {
             const userDocSnap = await getDoc(userDocRef);
 
             if (userDocSnap.exists() && userDocSnap.data().isAdmin === true) {
-              navigate('/dashboard/default');
+              // navigate('/dashboard/default');
+              window.location.href = '/dashboard/default';
             } else {
              
               await auth.signOut();

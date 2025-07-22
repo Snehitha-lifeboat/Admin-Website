@@ -343,8 +343,8 @@ const SamplePage = () => {
                         </ul>
                       </TableCell>
                       <TableCell>
-                        <IconButton onClick={() => handleEdit(lead)}><Edit /></IconButton>
-                        <IconButton onClick={() => handleDeleteConfirm(lead.id)}><Delete /></IconButton>
+                        <IconButton color='primary' onClick={() => handleEdit(lead)}><Edit /></IconButton>
+                        <IconButton color='error' onClick={() => handleDeleteConfirm(lead.id)}><Delete /></IconButton>
                       </TableCell>
                     </TableRow>
                   ))}

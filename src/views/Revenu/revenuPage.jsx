@@ -300,8 +300,8 @@ const filtered = transactions.filter(txn => txn.txnType?.toLowerCase() === activ
                       {activeTab === 'credit' && <TableCell>{txn.student}</TableCell>}
                       <TableCell>{txn.remarks}</TableCell>
                       <TableCell>
-                        <IconButton onClick={() => handleEdit(txn)}><Edit /></IconButton>
-                        <IconButton onClick={() => handleDeleteConfirm(txn.docId)}><Delete /></IconButton>
+                        <IconButton color='primary'onClick={() => handleEdit(txn)}><Edit /></IconButton>
+                        <IconButton  color='error' onClick={() => handleDeleteConfirm(txn.docId)}><Delete /></IconButton>
                       </TableCell>
                     </TableRow>
                   ))}

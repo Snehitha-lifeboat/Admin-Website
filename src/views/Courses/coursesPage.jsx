@@ -224,8 +224,9 @@ imageUrl: formData.imageUrl
                         ) : 'N/A'}
                       </TableCell>
                       <TableCell>
-                        <IconButton onClick={() => handleEdit(course)}><Edit /></IconButton>
-                        <IconButton onClick={() => handleDeleteConfirm(course.id)}><Delete /></IconButton>
+                        <IconButton  color='primary' 
+                        onClick={() => handleEdit(course)}><Edit /></IconButton>
+                        <IconButton color='error' onClick={() => handleDeleteConfirm(course.id)}><Delete /></IconButton>
                       </TableCell>
                     </TableRow>
                   ))}

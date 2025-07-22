@@ -372,8 +372,8 @@ const UsersPage = () => {
                       <TableCell>{user.name}</TableCell>
                       <TableCell>{user.email}</TableCell>
                       <TableCell>
-                        <IconButton onClick={() => handleEdit(user)}><Edit /></IconButton>
-                        <IconButton onClick={() => handleDeleteConfirm(user.docId)}><Delete /></IconButton>
+                        <IconButton color='primary' onClick={() => handleEdit(user)}><Edit /></IconButton>
+                        <IconButton color='error' onClick={() => handleDeleteConfirm(user.docId)}><Delete /></IconButton>
                       </TableCell>
                     </TableRow>
                   ))}

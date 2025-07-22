@@ -224,8 +224,8 @@ const NewsPage = () => {
                         ) : 'N/A'}
                       </TableCell>
                       <TableCell>
-                        <IconButton onClick={() => handleEdit(item)}><Edit /></IconButton>
-                        <IconButton onClick={() => handleDeleteConfirm(item.id)}><Delete /></IconButton>
+                        <IconButton  color="primary" onClick={() => handleEdit(item)}><Edit /></IconButton>
+                        <IconButton  color="error" onClick={() => handleDeleteConfirm(item.id)}><Delete /></IconButton>
                       </TableCell>
                     </TableRow>
                   ))}

@@ -262,8 +262,8 @@ console.log('All courses:', courses);
                       <TableCell>{trainer.share}</TableCell>
                       <TableCell>{trainer.duration}</TableCell>
                       <TableCell>
-                        <IconButton onClick={() => handleEdit(trainer)}><Edit /></IconButton>
-                        <IconButton onClick={() => handleDeleteConfirm(trainer.docId)}><Delete /></IconButton>
+                        <IconButton color='primary' onClick={() => handleEdit(trainer)}><Edit /></IconButton>
+                        <IconButton color='error'onClick={() => handleDeleteConfirm(trainer.docId)}><Delete /></IconButton>
                       </TableCell>
                     </TableRow>
                   ))}
